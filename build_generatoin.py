@@ -3,6 +3,6 @@ import numpy as np
 import pandas as pd
 
 
-gen = np.arange(-10, 10)
+gen = np.arange(-10, 11)
 print(gen)
 # crom =
