@@ -13,7 +13,7 @@ Well-dressed = خوش پوشی
 Lying = دروغگویی
 """
 
-Fitt_count = []
+# Fitt_count = []
 Nasl = []
 for i in range(1,101):
     crom_dic = {"hard-worker": np.random.randint(-10, 11),
@@ -27,11 +27,10 @@ for i in range(1,101):
     Fittness_Func = (crom_dic["hard-worker"] ** 3) + (crom_dic["age"]) + (crom_dic["Lying"] * 2) + (crom_dic["running_away_from_work"]) + (crom_dic["patience"]) + (crom_dic["height"]) + (crom_dic["Well-dressed"] * 2)
     crom_dic["Fittness_Func"] = Fittness_Func
     Nasl.append(crom_dic)
+    # Fitt_count.append(Fittness_Func)
 
-    Fitt_count.append(Fittness_Func)
-
-print(Nasl)
-print(Fitt_count)
+# print(Nasl)
+# print(Fitt_count)
 data = pd.DataFrame(Nasl, index=range(1, 101)).to_string()
 print(data)
 
