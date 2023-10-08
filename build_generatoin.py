@@ -29,6 +29,7 @@ for i in range(1,101):
     Nasl.append(crom_dic)
 
     Fitt_count.append(Fittness_Func)
+
 print(Nasl)
 print(Fitt_count)
 data = pd.DataFrame(Nasl, index=range(1, 101)).to_string()
