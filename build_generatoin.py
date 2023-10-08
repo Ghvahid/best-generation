@@ -1,6 +1,7 @@
 # try to build the best Gen after 100 priod Time
 import numpy as np
 import pandas as pd
+from random import randint
 # import bs4 as bs
 
 """"
@@ -37,11 +38,14 @@ print(data)
 
 ten_percent_of_Society = []
 for _ in range(10):
-    selected = np.random.randint(1,101)
-    new_so = first_Society[selected]
+    selected = randint(1,101)
+    new_so = first_Society[selected-1]
     ten_percent_of_Society.append(new_so)
-new_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111)).to_string()
-print(new_data)
+    print(selected)
+print()
+new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111)).to_string()
+print(new_mutatoin_data)
+
 
 
 
