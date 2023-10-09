@@ -69,7 +69,6 @@ print(new_mutatoin_data.to_string())
 
 
 
-
 def Generatoin():
     def mutatoin():
         pass
