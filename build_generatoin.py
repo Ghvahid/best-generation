@@ -1,7 +1,7 @@
 # try to build the best Gen after 100 priod Time
 import numpy as np
 import pandas as pd
-from random import randint
+from random import *
 # import bs4 as bs
 
 """"
@@ -25,7 +25,8 @@ for i in range(1, 101):
                 "height": np.random.randint(-10, 11),
                 "Well-dressed": np.random.randint(-10, 11),
                 "Lying": np.random.randint(-10, 11)}
-    Fittness_Func = (crom["hard-worker"] * 5) + (crom["age"]) - (crom["Lying"] * 3) - (crom["running_away_from_work"]) + (crom["patience"]*2) + (crom["height"]) + (crom["Well-dressed"] * 2)
+    Fittness_Func = (crom["hard-worker"] * 5) + (crom["age"]) - (crom["running_away_from_work"]) + \
+                    (crom["patience"]*2) + (crom["height"]) + (crom["Well-dressed"] * 2) - (crom["Lying"] * 3)
     crom["Fittness_Func"] = Fittness_Func
     first_Society.append(crom)
 
@@ -43,8 +44,27 @@ for _ in range(10):
     ten_percent_of_Society.append(new_so)
     print(selected)
 print()
-new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111)).to_string()
-print(new_mutatoin_data)
+new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111))
+print(new_mutatoin_data.to_string())
+
+
+
+
+random_gen_selectoin = randint(0, 6)
+new_gen_value = np.random.randint(-10, 11)
+print("random_select_gen :", random_gen_selectoin)
+print("new_value_gen = ", new_gen_value)
+new_mutatoin_data.iloc[:,random_gen_selectoin] = new_gen_value
+print(new_mutatoin_data.to_string())
+
+
+for i in range(len(new_mutatoin_data)):
+    Fittness_Func = ((new_mutatoin_data.iloc[i,0]) * 5) + (new_mutatoin_data.iloc[i,1]) - (new_mutatoin_data.iloc[i,2]) +\
+                    (new_mutatoin_data.iloc[i,3]*2) + (new_mutatoin_data.iloc[i,4]) + (new_mutatoin_data.iloc[i,5] * 2) -\
+                    (new_mutatoin_data.iloc[i,6] * 3)
+    new_mutatoin_data.loc[i,"Fittness_Func"] = Fittness_Func
+print(new_mutatoin_data.to_string())
+
 
 
 
