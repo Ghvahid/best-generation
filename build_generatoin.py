@@ -14,8 +14,6 @@ Well-dressed = خوش پوشی
 Lying = دروغگویی
 Society = جامعه
 """
-
-# def First_Society():
 first_Society = []
 for i in range(1, 101):
     crom = {"hard-worker": np.random.randint(-10, 11),
@@ -29,51 +27,30 @@ for i in range(1, 101):
                     (crom["patience"]*2) + (crom["height"]) + (crom["Well-dressed"] * 2) - (crom["Lying"] * 3)
     crom["Fittness_Func"] = Fittness_Func
     first_Society.append(crom)
-
 data = pd.DataFrame(first_Society, index=range(1, 101)).to_string()
-    # return data
 print(data)
 
-# print(First_Society())
-
-
-ten_percent_of_Society = []
-for _ in range(10):
-    selected = randint(1,101)
-    new_so = first_Society[selected-1]
-    ten_percent_of_Society.append(new_so)
-    print(selected)
-print()
-new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111))
-print(new_mutatoin_data.to_string())
-
-
-
-
+#Create 10 new people from first society ----->> def mutation
 random_gen_selectoin = randint(0, 6)
 new_gen_value = np.random.randint(-10, 11)
 print("random_select_gen :", random_gen_selectoin)
 print("new_value_gen = ", new_gen_value)
-new_mutatoin_data.iloc[:,random_gen_selectoin] = new_gen_value
+ten_percent_of_Society = []
+for _ in range(10):
+    selected = randint(1,100)
+    print(selected)
+    new_so =first_Society[selected-1]
+    # print(list(new_so.keys()))
+    l_keys = list(new_so.keys())
+    x = l_keys[random_gen_selectoin]
+    # print(x)
+    new_so[f"{x}"] = new_gen_value
+    Fittness_Func = (new_so["hard-worker"] * 5) + (new_so["age"]) - (new_so["running_away_from_work"]) + \
+                    (new_so["patience"] * 2) + (new_so["height"]) + (new_so["Well-dressed"] * 2) - (new_so["Lying"] * 3)
+    new_so["Fittness_Func"] = Fittness_Func
+    ten_percent_of_Society.append(new_so)
+# print(ten_percent_of_Society)
+print("-"*40)
+new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111))
 print(new_mutatoin_data.to_string())
-
-
-for i in range(len(new_mutatoin_data)):
-    Fittness_Func = ((new_mutatoin_data.iloc[i,0]) * 5) + (new_mutatoin_data.iloc[i,1]) - (new_mutatoin_data.iloc[i,2]) +\
-                    (new_mutatoin_data.iloc[i,3]*2) + (new_mutatoin_data.iloc[i,4]) + (new_mutatoin_data.iloc[i,5] * 2) -\
-                    (new_mutatoin_data.iloc[i,6] * 3)
-    new_mutatoin_data.loc[i,"Fittness_Func"] = Fittness_Func
-print(new_mutatoin_data.to_string())
-
-
-
-
-
-def Generatoin():
-    def mutatoin():
-        pass
-
-    def cross_over():
-        pass
-
-    pass
+# end of def mutation
