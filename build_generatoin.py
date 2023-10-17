@@ -38,7 +38,7 @@ print("new_value_gen = ", new_gen_value)
 ten_percent_of_Society = []
 for _ in range(10):
     selected = randint(1,100)
-    print(selected)
+    # print(selected)
     new_so =first_Society[selected-1]
     # print(list(new_so.keys()))
     l_keys = list(new_so.keys())
@@ -58,25 +58,36 @@ print(new_mutatoin_data.to_string())
 # Create def Crossover
 random_gen_selectoin = randint(0, 6)
 print("random_select_gen :", random_gen_selectoin)
-ten_percent_of_Society = []
+secend_ten_percent_of_Society = []
 for _ in range(5):
     selected_one = randint(1,100)
     selected_two = randint(1,100)
-    print(selected_one)
-    print(selected_two)
+    # print(selected_one)
+    # print(selected_two)
     new_so_1 =first_Society[selected_one-1]
     new_so_2 =first_Society[selected_two-1]
-    print(new_so_1)
-    print(new_so_2)
-    ten_percent_of_Society.append(new_so_1)
-    ten_percent_of_Society.append(new_so_2)
-print(ten_percent_of_Society)
-print("-"*40)
-new_crossover_data = pd.DataFrame(ten_percent_of_Society, index=range(111, 121))
+    # print(new_so_1)
+    # print(new_so_2)
+    new_1 = dict(list(new_so_1.items())[:random_gen_selectoin] + list(new_so_2.items())[random_gen_selectoin:])
+    new_2 = dict(list(new_so_2.items())[:random_gen_selectoin] + list(new_so_1.items())[random_gen_selectoin:])
+    # print(new_1)
+    # print(new_2)
+    Fittness_Func = (new_1["hard-worker"] * 5) + (new_1["age"]) - (new_1["running_away_from_work"]) + \
+                    (new_1["patience"] * 2) + (new_1["height"]) + (new_1["Well-dressed"] * 2) - (new_1["Lying"] * 3)
+    new_1["Fittness_Func"] = Fittness_Func
+    secend_ten_percent_of_Society.append(new_1)
+
+    Fittness_Func = (new_2["hard-worker"] * 5) + (new_2["age"]) - (new_2["running_away_from_work"]) + \
+                    (new_2["patience"] * 2) + (new_2["height"]) + (new_2["Well-dressed"] * 2) - (new_2["Lying"] * 3)
+    new_2["Fittness_Func"] = Fittness_Func
+    secend_ten_percent_of_Society.append(new_2)
+# print(secend_ten_percent_of_Society)
+print("+-"*40)
+new_crossover_data = pd.DataFrame(secend_ten_percent_of_Society, index=range(111, 121))
 print(new_crossover_data.to_string())
+# End of Create Crossover def
 
 
-part_1 = new_crossover_data.iloc[:,:random_gen_selectoin]
-part_2 = new_crossover_data.iloc[:,random_gen_selectoin:]
-print(part_1)
-print(part_2)
+all_society = [data,new_mutatoin_data, new_crossover_data]
+result = pd.concat(all_society)
+print(all_society)
