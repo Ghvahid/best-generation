@@ -89,4 +89,4 @@ print(new_crossover_data)
 
 x = [data, new_mutatoin_data, new_crossover_data]
 all_society = pd.concat(x)
-print(all_society)
+print(all_society.to_string())
