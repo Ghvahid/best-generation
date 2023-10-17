@@ -54,3 +54,29 @@ print("-"*40)
 new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111))
 print(new_mutatoin_data.to_string())
 # end of def mutation
+
+# Create def Crossover
+random_gen_selectoin = randint(0, 6)
+print("random_select_gen :", random_gen_selectoin)
+ten_percent_of_Society = []
+for _ in range(5):
+    selected_one = randint(1,100)
+    selected_two = randint(1,100)
+    print(selected_one)
+    print(selected_two)
+    new_so_1 =first_Society[selected_one-1]
+    new_so_2 =first_Society[selected_two-1]
+    print(new_so_1)
+    print(new_so_2)
+    ten_percent_of_Society.append(new_so_1)
+    ten_percent_of_Society.append(new_so_2)
+print(ten_percent_of_Society)
+print("-"*40)
+new_crossover_data = pd.DataFrame(ten_percent_of_Society, index=range(111, 121))
+print(new_crossover_data.to_string())
+
+
+part_1 = new_crossover_data.iloc[:,:random_gen_selectoin]
+part_2 = new_crossover_data.iloc[:,random_gen_selectoin:]
+print(part_1)
+print(part_2)
