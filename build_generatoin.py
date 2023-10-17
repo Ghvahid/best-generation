@@ -27,7 +27,7 @@ for i in range(1, 101):
                     (crom["patience"]*2) + (crom["height"]) + (crom["Well-dressed"] * 2) - (crom["Lying"] * 3)
     crom["Fittness_Func"] = Fittness_Func
     first_Society.append(crom)
-data = pd.DataFrame(first_Society, index=range(1, 101)).to_string()
+data = pd.DataFrame(first_Society, index=range(1, 101))
 print(data)
 
 #Create 10 new people from first society ----->> def mutation
@@ -52,7 +52,7 @@ for _ in range(10):
 # print(ten_percent_of_Society)
 print("-"*40)
 new_mutatoin_data = pd.DataFrame(ten_percent_of_Society, index=range(101, 111))
-print(new_mutatoin_data.to_string())
+print(new_mutatoin_data)
 # end of def mutation
 
 # Create def Crossover
@@ -84,10 +84,9 @@ for _ in range(5):
 # print(secend_ten_percent_of_Society)
 print("+-"*40)
 new_crossover_data = pd.DataFrame(secend_ten_percent_of_Society, index=range(111, 121))
-print(new_crossover_data.to_string())
+print(new_crossover_data)
 # End of Create Crossover def
 
-
-all_society = [data,new_mutatoin_data, new_crossover_data]
-result = pd.concat(all_society)
+x = [data, new_mutatoin_data, new_crossover_data]
+all_society = pd.concat(x)
 print(all_society)
