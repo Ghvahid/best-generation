@@ -87,6 +87,24 @@ new_crossover_data = pd.DataFrame(secend_ten_percent_of_Society, index=range(111
 print(new_crossover_data)
 # End of Create Crossover def
 
+#tajmih 3 dataframe dar yek jadval 120 adadi
 x = [data, new_mutatoin_data, new_crossover_data]
 all_society = pd.concat(x)
-print(all_society.to_string())
+# print(all_society.to_string())
+
+all_society.sort_values("Fittness_Func", ascending=True,inplace=True)
+m = min(all_society["Fittness_Func"])
+# z = all_society.index( "Fittness_Func" == m )
+print(m)
+print(all_society)
+
+
+
+# for i in range(20):
+#     m = min(all_society["Fittness_Func"])
+#     print(m)
+#     mini_Fitness = (all_society["Fittness_Func"] == m)
+#     print(all_society.loc[mini_Fitness, :])
+#     print(all_society.index(all_society.loc[mini_Fitness, :]))
+
+
